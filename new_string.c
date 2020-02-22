@@ -25,7 +25,11 @@ Returns: 	 The new-strcpy() function returns a pointer to the destination
 			 string destination.
 */
 char* new_strcpy(char* destination, const char* source) {
-
+	size_t i;
+	for (i = 0; source[i] != '\0'; ++i)
+		destination[i] = source[i];
+	destination[i] = '\0';
+	return destination;
 }
 
 /*
@@ -48,7 +52,14 @@ Returns: 	 The new-strncpy() function returns a pointer to the destination
 			 string destination.
 */
 char* new_strncpy(char* destination, const char* source, size_t n) {
+	size_t i;
 
+	for (i = 0; i < n && source[i] != '\0'; i++)
+		destination[i] = source[i];
+	for ( ; i < n; i++)
+		destination[i] = '\0';
+
+	return destination;
 }
 
 /*
@@ -127,7 +138,10 @@ Returns: 	 The new_strlen() function returns the number of characters in
 			 the  string pointed to by string.
 */
 size_t new_strlen(const char* string) {
-
+	size_t i;
+	for (i = 0; string[i] != '\0'; ++i)
+		;
+	return i;
 }
 
 /*
