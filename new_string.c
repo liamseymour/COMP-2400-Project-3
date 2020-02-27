@@ -9,6 +9,7 @@
  *******************************/
 
 #include <stddef.h>
+#include "new_string.h"
 
 /*
 Description: The new_strcpy() function copies the string pointed to by 
@@ -108,7 +109,7 @@ Returns: 	 The new_strcat() function returns a pointer to the  resulting
 			 string destination.
 */
 char* new_strcat(char* destination, const char* source) {
-
+	return new_strncat(destination, source, new_strlen(source));
 }
 
 /*
@@ -127,7 +128,17 @@ Returns: 	 The new_strncat() function returns a pointer to the  resulting
 			 string destination.
 */
 char* new_strncat(char* destination, const char* source, size_t n) {
+	int destinEnd = new_strlen(destination); //position of null char in destination
+	
+	int i = 0; 
+	while(source[i] != '\0' && i < n)
+	{
+		destination[destinEnd + i] = source[i];
+		i++;
+	}
 
+	destination[destinEnd + i] = '\0';
+	return destination;
 }
 
 /*

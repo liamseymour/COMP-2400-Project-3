@@ -121,7 +121,7 @@ int test_new_strncpy(void)
 	printf("\n####################### strncpy #######################\n\n");
 
 
-    const int casesCount = 6;
+    const int casesCount = 7;
     int passed = 0;
 	/* 2nd parameter, source */
     char *cases1[] = {
@@ -133,7 +133,8 @@ int test_new_strncpy(void)
         "", 
 		"foobar",
 		"foobar",
-		""
+		"",
+        "foobar"
     };
 	/* 3rd parameter, n */
 	int cases2[] = {
@@ -142,7 +143,8 @@ int test_new_strncpy(void)
 		0,
 		6,
 		10,
-		5
+		5,
+		3
 	};
 	
 	char ours[MAX_LEN];
