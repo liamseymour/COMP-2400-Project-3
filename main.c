@@ -520,7 +520,7 @@ int test_new_strstr(void)
 	printf("\n####################### strstr ########################\n\n");
 
 
-    const int casesCount = 9;
+    const int casesCount = 10;
     int passed = 0;
 	/* needle and haystack */
     char *cases[][2] = {
@@ -535,7 +535,8 @@ int test_new_strstr(void)
 		{"foobaz", ""},
 		{"", "foobar"},
 		{"1234", "12345"},
-		{"Joe", "Max"}
+		{"Joe", "Max"},
+		{"Pasta", "Pasta"}
     };
 	
 	char *ours;
