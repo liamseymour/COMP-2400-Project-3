@@ -158,7 +158,14 @@ Returns:     The new_strchr() function returns a pointer to the
 			 pointer to the terminator.
 */
 char* new_strchr(const char* string, int character) {
-
+	int i;
+	for (i = 0; string[i] != '\0'; ++i) {
+		if (string[i] == character)
+			return (char*) &string[i];
+	}
+	if (string[i] == character)
+		return (char*) &string[i];
+	return NULL;
 }
 
 /*
@@ -173,6 +180,18 @@ Returns: 	 The new_strstr() function returns a pointer to the beginning of
 			 the located sub-string, or NULL if the sub-string is not found.
 */
 char* new_strstr(const char* haystack, const char* needle) {
+	if (needle[0] == '\0')
+		return (char*) &haystack[0];
 
+
+	for (int i = 0; haystack[i] != '\0'; ++i) {
+		if (haystack[i] == needle[0]) {
+			for (int j = 1; haystack[i+j] == needle[j] && haystack[i+j] != '\0'; ++j) {
+				if (needle[j+1] == '\0')
+					return (char*) &haystack[i];
+			}
+		}
+	}
+	return NULL;
 }
 
