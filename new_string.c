@@ -163,6 +163,8 @@ char* new_strchr(const char* string, int character) {
 		if (string[i] == character)
 			return (char*) &string[i];
 	}
+	/* if we were looking for the null character
+	 * and we are at the end, return a pointer to it */
 	if (string[i] == character)
 		return (char*) &string[i];
 	return NULL;
@@ -180,13 +182,17 @@ Returns: 	 The new_strstr() function returns a pointer to the beginning of
 			 the located sub-string, or NULL if the sub-string is not found.
 */
 char* new_strstr(const char* haystack, const char* needle) {
+	/* The empty string always matches */
 	if (needle[0] == '\0')
 		return (char*) &haystack[0];
 
-
+	/* Check each character in haystack, if it is the start of needle, 
+	 * then we might have a match */
 	for (int i = 0; haystack[i] != '\0'; ++i) {
 		if (haystack[i] == needle[0]) {
 			for (int j = 1; haystack[i+j] == needle[j] && haystack[i+j] != '\0'; ++j) {
+				/* If all characters have matched (we haven't left the loop)
+				 * and we reach the end of needle, then we have found a match */
 				if (needle[j+1] == '\0')
 					return (char*) &haystack[i];
 			}
