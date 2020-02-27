@@ -230,7 +230,7 @@ int test_new_strncmp(void)
 	printf("\n####################### strncmp #######################\n\n");
 
 
-    const int casesCount = 9;
+    const int casesCount = 12;
     int passed = 0;
 	/* string1 and string2 */
     char *cases1[][2] = {
@@ -254,7 +254,10 @@ int test_new_strncmp(void)
 		{"foobaz", ""},
 		{"", "foobar"},
 		{"1234", "12345"},
-		{"Joe", "Max"}
+		{"Joe", "Max"},
+		{"12345", "1234"},
+		{"", "foobaz"},
+		{"",""}
     };
 
 	/* n */
@@ -267,6 +270,9 @@ int test_new_strncmp(void)
 		3,
 		10,
 		4,
+		0,
+		4,
+		13,
 		0
 	};
 	

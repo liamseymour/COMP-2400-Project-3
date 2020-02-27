@@ -75,7 +75,11 @@ Returns:     The new_strcmp() function returns the difference between strings
 			 as described by description.
 */
 int new_strcmp(const char* string1, const char* string2) {
+	int n = (new_strlen(string1) <= new_strlen(string2)) ? 
+			new_strlen(string2) : new_strlen(string1); //ternary opp to return max strlen
+			//use max value to catch unablanced strings 
 
+	return new_strncmp(string1, string2, n); 
 }
 
 /*
@@ -94,7 +98,22 @@ Returns:     The new_strncmp() function returns the difference between strings
 			 as described by description.
 */
 int new_strncmp(const char* string1, const char* string2, size_t n) {
+	int diff; //value to hold difference between characters
+	int i = 0;//incrimenter
+	while(i < n && string1[i] != '\0' && string2[i] != '\0')
+	{
+		diff = string1[i] - string2[i];
 
+		if(diff) 
+			return diff; //returns if diff != 0
+		i++;
+   	}
+	if((string1[i] == '\0' || string2[i] == '\0') && i < n)
+	{
+		return  string1[i] - string2[i]; //last check in case one string is longer
+	}
+
+	return diff; //if you got here diff was always 0 and still should be
 }
 
 /*
