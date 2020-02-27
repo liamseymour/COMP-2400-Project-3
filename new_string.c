@@ -9,6 +9,7 @@
  *******************************/
 
 #include <stddef.h>
+#include "new_string.h"
 
 /*
 Description: The new_strcpy() function copies the string pointed to by 
@@ -116,16 +117,17 @@ Returns: 	 The new_strncat() function returns a pointer to the  resulting
 			 string destination.
 */
 char* new_strncat(char* destination, const char* source, size_t n) {
-	int destinEnd = new_strlen(destination) + 1; //position of null char in destination
+	int destinEnd = new_strlen(destination); //position of null char in destination
+	
 	int i = 0; 
-	while(source[i] && i != n)
+	while(source[i] != '\0' && i < n)
 	{
 		destination[destinEnd + i] = source[i];
 		i++;
 	}
 
 	destination[destinEnd + i] = '\0';
-	return &destination;
+	return destination;
 }
 
 /*
@@ -136,7 +138,9 @@ Returns: 	 The new_strlen() function returns the number of characters in
 			 the  string pointed to by string.
 */
 size_t new_strlen(const char* string) {
-
+    size_t i;
+    for (i = 0; string[i] != '\0'; ++i);
+    return i;
 }
 
 /*
