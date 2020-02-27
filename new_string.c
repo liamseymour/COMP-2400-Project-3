@@ -25,7 +25,7 @@ Returns: 	 The new-strcpy() function returns a pointer to the destination
 			 string destination.
 */
 char* new_strcpy(char* destination, const char* source) {
-
+	
 }
 
 /*
@@ -97,7 +97,7 @@ Returns: 	 The new_strcat() function returns a pointer to the  resulting
 			 string destination.
 */
 char* new_strcat(char* destination, const char* source) {
-
+	return new_strncat(destination, source, new_strlen(source));
 }
 
 /*
@@ -116,7 +116,16 @@ Returns: 	 The new_strncat() function returns a pointer to the  resulting
 			 string destination.
 */
 char* new_strncat(char* destination, const char* source, size_t n) {
+	int destinEnd = new_strlen(destination) + 1; //position of null char in destination
+	int i = 0; 
+	while(source[i] && i != n)
+	{
+		destination[destinEnd + i] = source[i];
+		i++;
+	}
 
+	destination[destinEnd + i] = '\0';
+	return &destination;
 }
 
 /*
