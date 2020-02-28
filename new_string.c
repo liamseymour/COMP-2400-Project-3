@@ -25,7 +25,8 @@ Parameters:  Source - String to be copied.
 Returns: 	 The new-strcpy() function returns a pointer to the destination 
 			 string destination.
 */
-char* new_strcpy(char* destination, const char* source) {
+char* new_strcpy(char* destination, const char* source) 
+{
 	size_t i;
 	for (i = 0; source[i] != '\0'; ++i)
 		destination[i] = source[i];
@@ -52,7 +53,8 @@ Parameters:  Source - String to be copied.
 Returns: 	 The new-strncpy() function returns a pointer to the destination 
 			 string destination.
 */
-char* new_strncpy(char* destination, const char* source, size_t n) {
+char* new_strncpy(char* destination, const char* source, size_t n) 
+{
 	size_t i;
 
 	for (i = 0; i < n && source[i] != '\0'; i++)
@@ -74,7 +76,8 @@ Parameters:  string1, string2 - strings to be compared
 Returns:     The new_strcmp() function returns the difference between strings
 			 as described by description.
 */
-int new_strcmp(const char* string1, const char* string2) {
+int new_strcmp(const char* string1, const char* string2) 
+{
 	int n = (new_strlen(string1) <= new_strlen(string2)) ? 
 			new_strlen(string2) : new_strlen(string1); //ternary opp to return max strlen
 			//use max value to catch unablanced strings 
@@ -97,11 +100,11 @@ Parameters:  string1, string2 - strings to be compared
 Returns:     The new_strncmp() function returns the difference between strings
 			 as described by description.
 */
-int new_strncmp(const char* string1, const char* string2, size_t n) {
+int new_strncmp(const char* string1, const char* string2, size_t n) 
+{
 	int diff; //value to hold difference between characters
 	int i = 0;//incrimenter
-	while(i < n && string1[i] != '\0' && string2[i] != '\0')
-	{
+	while(i < n && string1[i] != '\0' && string2[i] != '\0') {
 		diff = string1[i] - string2[i];
 
 		if(diff) 
@@ -109,9 +112,7 @@ int new_strncmp(const char* string1, const char* string2, size_t n) {
 		i++;
    	}
 	if((string1[i] == '\0' || string2[i] == '\0') && i < n)
-	{
 		return  string1[i] - string2[i]; //last check in case one string is longer
-	}
 
 	return diff; //if you got here diff was always 0 and still should be
 }
@@ -127,7 +128,8 @@ Description: The new_strcat() function appends  the  source string to the
 Returns: 	 The new_strcat() function returns a pointer to the  resulting 
 			 string destination.
 */
-char* new_strcat(char* destination, const char* source) {
+char* new_strcat(char* destination, const char* source) 
+{
 	return new_strncat(destination, source, new_strlen(source));
 }
 
@@ -146,12 +148,12 @@ Parameters:  n - Max number of bytes to use from source.
 Returns: 	 The new_strncat() function returns a pointer to the  resulting 
 			 string destination.
 */
-char* new_strncat(char* destination, const char* source, size_t n) {
+char* new_strncat(char* destination, const char* source, size_t n) 
+{
 	int destinEnd = new_strlen(destination); //position of null char in destination
 	
 	int i = 0; 
-	while(source[i] != '\0' && i < n)
-	{
+	while(source[i] != '\0' && i < n) {
 		destination[destinEnd + i] = source[i];
 		i++;
 	}
@@ -167,7 +169,8 @@ Description: The  new_strlen() function calculates the length of the string
 Returns: 	 The new_strlen() function returns the number of characters in 
 			 the  string pointed to by string.
 */
-size_t new_strlen(const char* string) {
+size_t new_strlen(const char* string) 
+{
 	size_t i;
 	for (i = 0; string[i] != '\0'; ++i)
 		;
@@ -187,7 +190,8 @@ Returns:     The new_strchr() function returns a pointer to the
 			 that if c is specified as '\0', these functions return a 
 			 pointer to the terminator.
 */
-char* new_strchr(const char* string, int character) {
+char* new_strchr(const char* string, int character) 
+{
 	int i;
 	for (i = 0; string[i] != '\0'; ++i) {
 		if (string[i] == character)
@@ -211,7 +215,8 @@ Parameters:  needle - sub-string to be found in haystack.
 Returns: 	 The new_strstr() function returns a pointer to the beginning of 
 			 the located sub-string, or NULL if the sub-string is not found.
 */
-char* new_strstr(const char* haystack, const char* needle) {
+char* new_strstr(const char* haystack, const char* needle) 
+{
 	/* The empty string always matches */
 	if (needle[0] == '\0')
 		return (char*) &haystack[0];
